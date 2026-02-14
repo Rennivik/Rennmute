@@ -1,0 +1,24 @@
+{
+	"schemaVersion": 1,
+	"id": "tadmute",
+	"version": "${version}",
+	"name": "Tadmute",
+	"description": "Simple mod to mute the game with a key.",
+	"authors": [
+		"amphibic"
+	],
+	"license": "ARR",
+	"icon": "assets/tadmute/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"dev.amphibic.tadmute.Tadmute"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.18.4",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
