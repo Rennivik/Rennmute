@@ -7,7 +7,7 @@
 	"authors": [
 		"Rennivik"
 	],
-	"license": "ARR",
+	"license": "MIT",
 	"icon": "assets/rennivik/icon.png",
 	"environment": "client",
 	"entrypoints": {
