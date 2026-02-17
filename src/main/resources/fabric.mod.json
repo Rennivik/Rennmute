@@ -1,18 +1,18 @@
 {
 	"schemaVersion": 1,
-	"id": "tadmute",
+	"id": "rennmute",
 	"version": "${version}",
-	"name": "Tadmute",
+	"name": "Rennmute",
 	"description": "Simple mod to mute the game with a key.",
 	"authors": [
-		"amphibic"
+		"Rennivik"
 	],
 	"license": "ARR",
-	"icon": "assets/tadmute/icon.png",
+	"icon": "assets/rennivik/icon.png",
 	"environment": "client",
 	"entrypoints": {
 		"client": [
-			"dev.amphibic.tadmute.Tadmute"
+			"dev.rennivik.rennmute.Rennmute"
 		]
 	},
 	"depends": {

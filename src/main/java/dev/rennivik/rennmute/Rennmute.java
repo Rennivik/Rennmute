@@ -1,4 +1,4 @@
-package dev.amphibic.tadmute;
+package dev.rennivik.rennmute;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
@@ -16,15 +16,13 @@ import org.lwjgl.glfw.GLFW;
 import java.util.EnumMap;
 import java.util.Map;
 
-public class Tadmute implements ClientModInitializer {
+public class Rennmute implements ClientModInitializer {
 	private final Map<SoundCategory, Double> previousVolumes = new EnumMap<>(SoundCategory.class);
-	private boolean windowFocused = true;
-
 	@Override
 	public void onInitializeClient() {
 		KeyBinding muteKey = KeyBindingHelper.registerKeyBinding(
 				new KeyBinding(
-						"key.tadmute.toggle_mute",
+						"key.rennmute.toggle_mute",
 						InputUtil.Type.KEYSYM,
 						GLFW.GLFW_KEY_M,
 						KeyBinding.Category.MISC
@@ -58,34 +56,6 @@ public class Tadmute implements ClientModInitializer {
 				Text message = Text.literal(willMute ? "Muted the game!" : "Un-muted the game!")
 						.formatted(willMute ? Formatting.LIGHT_PURPLE : Formatting.GRAY);
 				client.player.sendMessage(message, false);
-			}
-
-			boolean focused = client.isWindowFocused();
-			if (focused != windowFocused) {
-				windowFocused = focused;
-
-				if (!focused) {
-					for (SoundCategory category : SoundCategory.values()) {
-						previousVolumes.put(category, options.getSoundVolumeOption(category).getValue());
-						options.getSoundVolumeOption(category).setValue(0.0);
-						soundManager.refreshSoundVolumes(category);
-					}
-					client.player.sendMessage(
-							Text.literal("Muted the game (lost focus)").formatted(Formatting.LIGHT_PURPLE),
-							false
-					);
-				} else if (!previousVolumes.isEmpty()) {
-					for (SoundCategory category : SoundCategory.values()) {
-						double previous = previousVolumes.getOrDefault(category, 1.0);
-						options.getSoundVolumeOption(category).setValue(previous);
-						soundManager.refreshSoundVolumes(category);
-					}
-					client.player.sendMessage(
-							Text.literal("Un-muted the game (focus restored)").formatted(Formatting.GRAY),
-							false
-					);
-					previousVolumes.clear();
-				}
 			}
 		});
 
